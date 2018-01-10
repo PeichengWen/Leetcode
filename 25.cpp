@@ -25,7 +25,7 @@ public:
             cur=pre->next;
             nex=cur->next;
             
-            for(int i=0;i<k;i++){
+            for(int i=1;i<k;i++){
                 
                 cur->next=nex->next;
                 nex->next=pre->next;
