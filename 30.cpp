@@ -7,11 +7,12 @@ public:
         if(words.size()==0) return res;
         int nsize = s.size();
         int len = words[0].size();
+        int wordnum=words.size();
         if(len>nsize) return res;
         int i=0;
         int redo=0;
         string temp;
-        while((i+len)<=nsize){
+        while((i+len*wordnum)<=nsize){
             unordered_map<string,int> hash;
             for(int m=0;m<words.size();m++){
                 hash[words[m]]++;
