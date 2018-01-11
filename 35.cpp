@@ -11,6 +11,7 @@ public:
             if(nums[mid]>target) j = mid;
             else i=mid+1;
         }
-        return (i);
+        if(i==n-1) return n;
+        return i;
     }
 };
