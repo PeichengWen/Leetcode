@@ -9,6 +9,7 @@ public:
         int len = words[0].size();
         if(len>nsize) return res;
         int i=0;
+        int redo=0;
         string temp;
         while((i+len)<=nsize){
             unordered_map<string,int> hash;
@@ -22,6 +23,7 @@ public:
             }
             while(hash.find(temp)!=hash.end()){
                 
+                redo=0;
                 hash[temp]--;
                 i+=len;
                 temp.clear();
@@ -30,11 +32,21 @@ public:
                 }
                 unordered_map<string,int>::iterator itr;
                 for(itr=hash.begin();itr!=hash.end();itr++){
+                    if(itr->second<0){
+                        redo=1;
+                        break;
+                    }
                     if(itr->second!=0) break;
                 }
-                if(itr==hash.end()) res.push_back(pos);
+                if(redo==1){
+                    i=i-len;break;
+                }
+                if(itr==hash.end()) {
+                    res.push_back(pos);
+                    
+                }
             }
-            i+=len;
+            i=pos+len;
         }
         return res;
     }
