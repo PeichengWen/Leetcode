@@ -46,7 +46,7 @@ public:
                     
                 }
             }
-            i=pos+len;
+            i=pos+1;
         }
         return res;
     }
