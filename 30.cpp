@@ -9,13 +9,13 @@ public:
         int len = words[0].size();
         if(len>nsize) return res;
         int i=0;
-        
+        string temp;
         while((i+len)<=nsize){
             unordered_map<string,int> hash;
             for(int m=0;m<words.size();m++){
                 hash[words[m]]++;
             }
-            string temp;
+            temp.clear();
             int pos = i;
             for(int j=0;j<len;j++){
                 temp+=s[i+j];
@@ -24,7 +24,7 @@ public:
                 
                 hash[temp]--;
                 i+=len;
-                string temp;
+                temp.clear();
                 for(int j=0;j<min(len,(nsize-i));j++){
                     temp+=s[i+j];
                 }
@@ -32,12 +32,9 @@ public:
                 for(itr=hash.begin();itr!=hash.end();itr++){
                     if(itr->second!=0) break;
                 }
-                if(itr==hash.end()) res.push_back(i);
+                if(itr==hash.end()) res.push_back(pos);
             }
             i+=len;
-            
-            
-            
         }
         return res;
     }
